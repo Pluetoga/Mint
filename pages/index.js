@@ -129,6 +129,7 @@ export default function Home() {
     console.log(candyMachineData.data)
   }, [candyMachineData])
 
+  
   // useEffect(() => {
   //   setCanMint(wallet.connected && candyMachineData.data.isPublic && parseInt(candyMachineData.data.numUploadedTokens) > parseInt(candyMachineData.data.numMintedTokens) && timeLeftToMint.presale === "LIVE")
   // }, [wallet, candyMachineData, timeLeftToMint])
@@ -146,21 +147,29 @@ export default function Home() {
         </Head>
 
         <main className={styles.main}>
-          
           <div className={styles.topcorner}>
             <ConnectWalletButton connectButton={!wallet.connected} className="d-flex" />
           </div>
-          <img src={collectionCoverUrl} style={{ width: "480px", height:"480px" }} />
+          <img src={collectionCoverUrl} class="imgshow" />
           <div id="collection-info" className="d-flex flex-column align-items-center text-white" style={{width: "80%"}}>
             {isFetchignCmData ? <Spinner animation="border" role="status" className="mt-5"><span className="visually-hidden">Loading...</span></Spinner> : 
             <>
+              
+              <h1 className="mx-3 mb-0 enup">
+                <span class="freem">Free mint</span>
+                <span style={{margin: "20px 0", color: candyMachineData.data.isPublic ? "#33ddaa" : "red"}}>
+                ●
+                </span>
+              </h1>
+              <h4 className="mx-3 enup gofind">Go find your treasure doge</h4>
               <div className="d-flex align-items-center my-3">
-                <input className={`${styles.defaultInput} me-3`} type="number" min="1" max={candyMachineData.data.maxMintsPerWallet === undefined ? 10 : Math.min(candyMachineData.data.maxMintsPerWallet, candyMachineData.data.numUploadedTokens - candyMachineData.data.numMintedTokens)} value={mintInfo.numToMint} onChange={(e) => setMintInfo({...mintInfo, numToMint: e.target.value})} />
-                <button className={styles.button} onClick={mint} disabled={!canMint}>{mintInfo.minting ? <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner> : "Mint"}</button>
-                <h4 className="mx-3 mb-0">{candyMachineData.data.mintFee * mintInfo.numToMint} $APT</h4>
-                <span style={{width: "15px", height: "15px", borderRadius: "50%", background: candyMachineData.data.isPublic ? "green" : "red"}}></span>
+                <div class="inputBox">
+                  <input type="number" min="1" id="mintnum" max={candyMachineData.data.maxMintsPerWallet === undefined ? 10 : Math.min(candyMachineData.data.maxMintsPerWallet, candyMachineData.data.numUploadedTokens - candyMachineData.data.numMintedTokens)} value={mintInfo.numToMint} onChange={(e) => setMintInfo({...mintInfo, numToMint: e.target.value})} />
+                  <span>Good luck</span>
+                </div>
+                <button className={styles.button} onClick={mint} disabled={!canMint}>{mintInfo.minting ? <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner> : "MINT"}</button>
               </div>
-              <h5>{candyMachineData.data.numMintedTokens}/ {COLLECTION_SIZE} minted</h5>
+              <h5 class="minted">{candyMachineData.data.numMintedTokens}/ {COLLECTION_SIZE} MINTED</h5>
             </>}
           </div>
 

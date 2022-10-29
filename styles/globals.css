@@ -1,11 +1,113 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
-  background: #111111;
+@font-face {
+  font-family: "P1";
+  src:  url(../public/P1.ttf) format('truetype'),
+        url(../public/P1.woff) format('woff');
+}
+
+@font-face {
+  font-family: "P2";
+  src:  url(../public/P2.ttf) format('truetype'),
+        url(../public/P2.woff) format('woff');
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  background-color: #000;
+  background-image: 
+    radial-gradient(closest-side, rgba(255, 255, 0, 0.1), rgba(235, 105, 78, 0)),
+    radial-gradient(closest-side, rgba(255, 115, 40, 0.1), rgba(243, 11, 164, 0)),
+    radial-gradient(closest-side, rgba(255, 0, 55, 0.1), rgba(254, 234, 131, 0)),
+    radial-gradient(closest-side, rgba(255, 5, 245, 0.1), rgba(170, 142, 245, 0)),
+    radial-gradient(closest-side, rgba(255, 0, 85, 0.1), rgba(248, 192, 147, 0));
+  background-size: 
+    130vmax 130vmax,
+    80vmax 80vmax,
+    90vmax 90vmax,
+    110vmax 110vmax,
+    90vmax 90vmax;
+  background-position:
+    -80vmax -80vmax,
+    60vmax -30vmax,
+    10vmax 10vmax,
+    -30vmax -10vmax,
+    50vmax 50vmax;
+  background-repeat: no-repeat;
+  animation: 5s movement linear infinite;
+}
+
+body::after {
+  content: '';
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: -999;
+}
+
+@keyframes movement {
+  0%, 100% {
+    background-size: 
+      130vmax 130vmax,
+      80vmax 80vmax,
+      90vmax 90vmax,
+      110vmax 110vmax,
+      90vmax 90vmax;
+    background-position:
+      -80vmax -80vmax,
+      60vmax -30vmax,
+      10vmax 10vmax,
+      -30vmax -10vmax,
+      50vmax 50vmax;
+  }
+  25% {
+    background-size: 
+      100vmax 100vmax,
+      90vmax 90vmax,
+      100vmax 100vmax,
+      90vmax 90vmax,
+      60vmax 60vmax;
+    background-position:
+      -60vmax -90vmax,
+      50vmax -40vmax,
+      0vmax -20vmax,
+      -40vmax -20vmax,
+      40vmax 60vmax;
+  }
+  50% {
+    background-size: 
+      80vmax 80vmax,
+      110vmax 110vmax,
+      80vmax 80vmax,
+      60vmax 60vmax,
+      80vmax 80vmax;
+    background-position:
+      -50vmax -70vmax,
+      40vmax -30vmax,
+      10vmax 0vmax,
+      20vmax 10vmax,
+      30vmax 70vmax;
+  }
+  75% {
+    background-size: 
+      90vmax 90vmax,
+      90vmax 90vmax,
+      100vmax 100vmax,
+      90vmax 90vmax,
+      70vmax 70vmax;
+    background-position:
+      -50vmax -40vmax,
+      50vmax -30vmax,
+      20vmax 0vmax,
+      -10vmax 10vmax,
+      40vmax 60vmax;
+  }
 }
 
 a {
@@ -37,4 +139,102 @@ html {
 .modal-content {
   background: #111111!important;
   color: white!important;
+}
+
+
+.inputBox 
+{
+	position: relative;
+	width: 180px;
+  left: 0;
+}
+.inputBox input 
+{
+	padding: 10px 10px;
+	border: none;
+	outline: none;
+	width: 100%;
+	background: #291814;
+	border: 1px solid rgba(255,255,255,0.25);
+	color: #fff;
+	font-size: 1em;
+	transition: 0.5s;
+  border-radius: .3em 0 0 .3em;
+}
+.inputBox span 
+{
+	position: absolute;
+	left: 0;
+	padding: 10px 10px;
+	pointer-events: none;
+	font-size: 1em;
+	transition: 0.5s;
+	text-transform: uppercase;
+	color: transparent;
+}
+.inputBox input:valid ~ span, 
+.inputBox input:focus ~ span 
+{
+	color: #fff;
+	font-size: 0.65em;
+	transform: translateX(10px) translateY(-7px);
+	padding: 0 5px;
+	background: #ff7100;
+	border-left: 1px solid #ff7100;
+	border-right: 1px solid #ff7100;
+	letter-spacing: 0.2em;
+  border-radius: 2px;
+}
+.inputBox input:valid, 
+.inputBox input:focus 
+{
+	border: 1px solid #ff7100;
+} 
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+.enup 
+{
+	text-transform: uppercase;
+  font-family: 'P1';
+}
+
+.freem{
+  position: relative;
+  font-size: 60px;
+  font-family: "P1";
+  color: #fff;
+  line-height: 1;
+  display: inline-block;
+  background-image: -webkit-linear-gradient(left,#ffff00,#ffd213,#ff7129,#ff0035);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: .6em;
+}
+
+h1 span{
+  font-size: 50px;
+}
+
+.gofind{
+  margin-bottom: .6em;
+}
+
+.imgshow{
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  border: solid 3px #ff7100;
+}
+
+.minted{
+  font-family: "P2";
+  margin-top: 20px;
 }
